@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+<head>
+    <title>Seguro No Pagamos Cooperativa - Formulario de contacto</title>
+</head>
+
+<body>
+    <div>
+        <h1>Seguro No Pagamos Cooperativa</h1>
+        <h3>Formulario de contacto.</h3>
+    </div>
+    <div>
+        <form onsubmit="onFormSubmitted(); return false;">
+            <div>
+                <label for="firstName">Nombre: </label>
+                <input type="text" id="firstName" name="firstName" required>
+            </div>
+
+            <div>
+                <label for="lastName">Apellido: </label>
+                <input type="text" id="lastName" name="lastName" required>
+            </div>
+
+            <div>
+                <label for="dni">DNI: </label>
+                <input type="number" id="dni" name="dni" required>
+            </div>
+
+            <div>
+                <label for="email">E-mail: </label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div>
+                <label for="phoneNumber">Teléfono: </label>
+                <input type="number" id="phoneNumber" name="phoneNumber" required>
+            </div>
+
+            <div>
+                <label for="insuranceType">Tipo de Seguro:</label>
+                <select id="insuranceType" name="insuranceType" onchange="setInsuranceValue()" required>
+                    <option value="1">Básico</option>
+                    <option value="2">Intermedio</option>
+                    <option value="3">Premium</option>
+                </select>
+            </div>
+
+            <div name="insuranceValue" id="insuranceValue"></div>
+
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
