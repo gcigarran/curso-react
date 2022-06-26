@@ -1,33 +1,32 @@
 import React from "react"
+import { useForm } from "react-hook-form"
+import Input from "../Components/Input"
 
 function RegistroPage() {
-    return (
-           <div>
-               <h3>Formulario de Registro</h3>
-               <form onsubmit="return false;">
+    const { register, handleSubmit, watch, formState: { errors } } = useForm()
 
-               <label for="name">Nombre</label>
-               <input type="text" id="name" name="name" required></input><br/>
-
-               <label for="lastName">Apellido</label>
-               <input type="text" id="lastName" name="lastName" required></input><br/>
-               
-               <label for="email">Email</label>
-               <input type="email" id="email" name="email" required></input><br/>
-               
-               <label for="phone">Telefono</label>
-               <input type="number" id="phone" name="phone" required></input><br/>
-               
-               <label for="password">Password</label>
-               <input type="password" id="password" name="password" required></input><br/>
-
-               <label for="confirmPassword">Confirmar Password</label>
-               <input type="password" id="confirmPassword" name="confirmPassword" required></input><br/>
-
-               <input type="submit" id="submitButton" name="submitButton" value="Submit"></input>
-               </form>
-           </div>
-       ) 
+    const onSubmit = (data) => {
+        console.log("Form:", data)
     }
+
+    return (
+        <div>
+            <h3>Formulario de Registro</h3>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <Input label="Nombre" name="name" register={{ ...register("name") }} />
+
+                <Input label="Apellido" name="lastname" register={{ ...register("lastName") }} />
+
+                <Input label="Email" name="email" register={{ ...register("email") }} type="email" />
+
+                <Input label="Phone" name="phone" register={{ ...register("phone") }} type="number" />
+
+                <Input label="Password" name="password" register={{ ...register("password") }} type="password" />
+
+                <input type="submit" id="submitButton" name="submitButton" value="Submit"></input>
+            </form>
+        </div>
+    )
+}
 
 export default RegistroPage

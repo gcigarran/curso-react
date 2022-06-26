@@ -14,6 +14,9 @@ function Menu () {
                <li>
                    <Link to="/registro">Registro</Link>
                </li>
+               <li>
+                   <Link to="/login">Login</Link>
+               </li>
            </ul>
 
         </div>

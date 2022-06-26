@@ -10,6 +10,8 @@ function DetallePage() {
 
     const [producto, setProducto] = useState({})
 
+    const [mensaje, setMensaje] = useState('')
+
     useEffect(
         () => {
             try {
@@ -27,6 +29,10 @@ function DetallePage() {
         [id]
     )
 
+    const handleClick = () => {
+        setMensaje('¡Gracias por su compra!')
+    }
+
     if (loading) {
         return (
             <div>
@@ -39,19 +45,8 @@ function DetallePage() {
                 <h1> {producto.title}</h1>
                 <img src={producto.thumbnail} alt={producto.thumbnail_id}></img>
                 <p>Precio: {producto.currency_id}  {producto.price}</p>
-                <h3>Fotos</h3>
-                {producto.pictures.map(eachImage =>
-                    <img src={eachImage.url} alt={eachImage.id}></img>
-                )}
-                <h4>Tags</h4>
-                <p>
-                    {producto.tags.map(eachTag => {
-                        return (
-                            "#" + eachTag + " "
-                        )
-
-                    })}
-                </p>
+                <button onClick={handleClick}>Comprar</button>
+                <div>{mensaje}</div>
             </div>
         )
 
