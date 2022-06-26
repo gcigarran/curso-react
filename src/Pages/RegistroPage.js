@@ -1,6 +1,7 @@
 import React from "react"
 import { useForm } from "react-hook-form"
 import Input from "../Components/Input"
+import {Button, Form} from 'react-bootstrap'
 
 function RegistroPage() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm()
@@ -12,7 +13,7 @@ function RegistroPage() {
     return (
         <div>
             <h3>Formulario de Registro</h3>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <Form onSubmit={handleSubmit(onSubmit)}>
                 <Input label="Nombre" name="name" register={{ ...register("name") }} />
 
                 <Input label="Apellido" name="lastname" register={{ ...register("lastName") }} />
@@ -23,8 +24,8 @@ function RegistroPage() {
 
                 <Input label="Password" name="password" register={{ ...register("password") }} type="password" />
 
-                <input type="submit" id="submitButton" name="submitButton" value="Submit"></input>
-            </form>
+                <Button type="submit" variant="primary">Registro</Button>
+            </Form>
         </div>
     )
 }

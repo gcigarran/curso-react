@@ -1,16 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {Card, Button, Col} from "react-bootstrap"
 
 function Producto(props) {
     const data = props.data
 
     return (
-        <div>
-            <p><b>{data.title}</b></p>
-            <p>Precio: {data.currency_id} {data.price}</p>
-            <p>Cantidad disponible: {data.available_quantity}</p>
-            <button><Link to={'/producto/' + data.id}>Ver Detalle</Link></button>
-        </div>
+            <Col>
+            <Card style={{ width: '18rem' }}>
+                <Card.Img variant="top" src={data.thumbnail} />
+                <Card.Body>
+                    <Card.Title>{data.title}</Card.Title>
+                    <Card.Text>
+                        Precio: {data.currency_id} {data.price} <br />
+                        Cantidad disponible: {data.available_quantity}
+                    </Card.Text>
+                    <Button variant="primary" as={Link} to={'/producto/' + data.id}>Ver Detalle</Button>
+                </Card.Body>
+            </Card>
+            </Col>
     )
 
 }
