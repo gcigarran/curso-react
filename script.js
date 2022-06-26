@@ -1,44 +1,35 @@
-function setInsuranceValue() {
-    var insuranceTypeValue = document.getElementById("insuranceType").value
-    var insuranceValue = document.getElementById("insuranceValue")
-
-    switch(insuranceTypeValue) {
-        case "1": 
-            updateElementInnerHtmlWith(insuranceValue, "$ 500"); 
-            break;
-        case "2": 
-            updateElementInnerHtmlWith(insuranceValue, "$ 1000"); 
-            break;
-        case "3": 
-            updateElementInnerHtmlWith(insuranceValue, "$ 1500"); 
-            break;
-    }
+const setResultElement = result => {
+    document.getElementById("result").value = isNaN(result) ? operationError() : result
 }
 
-function updateElementInnerHtmlWith(anElement, aValue) {
-    anElement.innerHTML = aValue
+const getOperand = anId => {
+    return parseFloat(document.getElementById(anId).value)
 }
 
-function documentValueFrom(anId) {
-    return document.getElementById(anId).value
+const firstOperand = () => {
+    return getOperand("firstNumber")
 }
 
-function selectedOptionTextFrom(anId) {
-    var element = document.getElementById(anId)
-
-    return element.options[element.selectedIndex].text
+const secondOperand = () => {
+    return getOperand("secondNumber")
 }
 
-function onFormSubmitted() {
-    var name = documentValueFrom("firstName")
-    var surname = documentValueFrom("lastName")
-    var dni = documentValueFrom("dni")
-    var email = documentValueFrom("email")
-    var phone = documentValueFrom("phoneNumber")
-    var insuranceType = selectedOptionTextFrom("insuranceType")
-    var insuranceValue = document.getElementById("insuranceValue").innerHTML
-    
-    console.log(name,surname,dni,email,phone,insuranceType, insuranceValue)
+const add = () => {
+    setResultElement(firstOperand() + secondOperand())
 }
 
-setInsuranceValue()
+const subtract = () => {
+    setResultElement(firstOperand() - secondOperand())
+}
+
+const multiply = () => {
+    setResultElement(firstOperand() * secondOperand())
+}
+
+const divide = () => {
+    setResultElement(firstOperand() / secondOperand())
+}
+
+const operationError = () => {
+    console.error("Operation error")
+}
