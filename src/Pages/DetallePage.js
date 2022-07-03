@@ -18,7 +18,7 @@ function DetallePage() {
                 const request = async () => {
                     const response = await getProductoById(id)
                     setLoading(false)
-                    setProducto(response.data())
+                    setProducto(response)
                 }
                 request()
             } catch (err) {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getProductoNamed } from "../Services/productosService";
+import { getProductosNamed } from "../Services/productosService";
 import Producto from "./Producto";
 import Row from "react-bootstrap/Row"
 
@@ -15,7 +15,7 @@ function Productos() {
         () => {
             setLoading(false)
 
-            getProductoNamed(productName)
+            getProductosNamed(productName)
                 .then(response => {
                     console.log("response")
                     setProductos(response)
@@ -43,7 +43,7 @@ function Productos() {
                 <p>Término buscado: <input value={productName} onChange={handleChange}></input></p>
                 <Row>
                     {productos.map(producto =>
-                        <Producto data={{...producto.data(),...{id:producto.id}}} />
+                        <Producto data={producto} />
                     )} 
                 </Row>
             </div>

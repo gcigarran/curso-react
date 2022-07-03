@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import Input from "../Components/Input"
 import { Button, Form } from 'react-bootstrap'
-import firebase from '../Config/firebase'
-import { getProductoById, update, deleteProducto } from '../Services/productosService'
+import { update, deleteProducto, getProductoById } from '../Services/productosService'
 import { useParams } from "react-router-dom"
 
 function ProductosModificar() {
@@ -32,11 +31,12 @@ function ProductosModificar() {
             try {
                 const request = async () => {
                     const response = await getProductoById(id)
+                    const producto = response
                     setLoading(false)
-                    console.log(response.data())
-                    setValue("title", response.data().title)
-                    setValue("price", response.data().price)
-                    setValue("description", response.data().description)
+                    console.log(producto)
+                    setValue("title", producto.title)
+                    setValue("price", producto.price)
+                    setValue("description", producto.description)
                 }
                 request()
             } catch (err) {

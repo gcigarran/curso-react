@@ -2,7 +2,7 @@ import React from "react"
 import { useForm } from "react-hook-form"
 import Input from "../Components/Input"
 import { Button, Form } from 'react-bootstrap'
-import firebase from '../Config/firebase'
+import { insert } from "../Services/productosService"
 
 function ProductosAlta() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm()
@@ -10,13 +10,7 @@ function ProductosAlta() {
     const onSubmit = async (data) => {
         console.log("Form:", data)
         try {
-            const document = await firebase.firestore.collection("productos")
-                .add({
-                    title: data.title,
-                    description: data.description,
-                    price: data.price
-                })
-            console.log(document)
+            await insert(data)
         }
         catch (error) {
             console.log(error)
