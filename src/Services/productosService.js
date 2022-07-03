@@ -1,1 +1,7 @@
-export * from "./productosFirestoreService" 
+export {
+    getProductoById,
+    getProductosNamed,
+    insert,
+    update,
+    deleteProducto
+} from "./productosFirestoreService" 
