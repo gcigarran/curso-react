@@ -1,8 +1,7 @@
 import React from "react"
 import { useForm } from "react-hook-form"
-import Input from "../Components/Input"
-import { Button, Form } from 'react-bootstrap'
 import { insert } from "../Services/productosService"
+import ProductoFormulario from "../Components/ProductoFormulario"
 
 function ProductosAlta() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm()
@@ -20,15 +19,7 @@ function ProductosAlta() {
     return (
         <div>
             <h3>Alta Producto</h3>
-            <Form onSubmit={handleSubmit(onSubmit)}>
-                <Input label="Título" name="title" register={{ ...register("title") }} />
-
-                <Input label="Descripción" name="description" register={{ ...register("description") }} />
-
-                <Input label="Precio" name="price" register={{ ...register("price") }} type="number" />
-
-                <Button type="submit" variant="primary">Crear</Button>
-            </Form>
+            <ProductoFormulario onSubmit={handleSubmit(onSubmit)} buttonLabel={"Crear"} register={register} />
         </div>
     )
 }
