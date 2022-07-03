@@ -9,9 +9,9 @@ function Input(props) {
             <Form.Group className="mb-3" controlId={name}>
                 <Form.Label>{label}</Form.Label>
                 <Form.Control type={type || "text"} placeholder={placeholder || ""} name={name} {...register}/>
-                <Form.Text className="text-muted">
+                {/* <Form.Text className="text-muted">
                     We'll never share your email with anyone else.
-                </Form.Text>
+                </Form.Text> */}
             </Form.Group>
             </div>
     )

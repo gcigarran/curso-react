@@ -16,7 +16,10 @@ function Productos() {
             setLoading(false)
 
             getProductoNamed(productName)
-                .then(response => setProductos(response.results))
+                .then(response => {
+                    console.log("response")
+                    setProductos(response)
+                })
 
         },
         [productName]
@@ -32,7 +35,7 @@ function Productos() {
                 Loading...
             </div>
         )
-    } else {
+    } 
 
         return (
             <div>
@@ -40,12 +43,12 @@ function Productos() {
                 <p>Término buscado: <input value={productName} onChange={handleChange}></input></p>
                 <Row>
                     {productos.map(producto =>
-                        <Producto data={producto} />
+                        <Producto data={{...producto.data(),...{id:producto.id}}} />
                     )} 
                 </Row>
             </div>
         )
-    }
+    
 }
 
 export default Productos

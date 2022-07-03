@@ -4,7 +4,7 @@ import {Card, Button, Col} from "react-bootstrap"
 
 function Producto(props) {
     const data = props.data
-
+    console.log("producto", props.data)
     return (
             <Col>
             <Card style={{ width: '18rem' }}>
@@ -16,6 +16,7 @@ function Producto(props) {
                         Cantidad disponible: {data.available_quantity}
                     </Card.Text>
                     <Button variant="primary" as={Link} to={'/producto/' + data.id}>Ver Detalle</Button>
+                    <Button variant="secondary" as={Link} to={'/productos/modificar/' + data.id}>Modificar</Button>
                 </Card.Body>
             </Card>
             </Col>

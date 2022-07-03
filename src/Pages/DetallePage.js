@@ -18,7 +18,7 @@ function DetallePage() {
                 const request = async () => {
                     const response = await getProductoById(id)
                     setLoading(false)
-                    setProducto(response)
+                    setProducto(response.data())
                 }
                 request()
             } catch (err) {
@@ -43,6 +43,7 @@ function DetallePage() {
         return (
             <div>
                 <h1> {producto.title}</h1>
+                <p> {producto.description} </p>
                 <img src={producto.thumbnail} alt={producto.thumbnail_id}></img>
                 <p>Precio: {producto.currency_id}  {producto.price}</p>
                 <button onClick={handleClick}>Comprar</button>
