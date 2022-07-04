@@ -13,14 +13,17 @@ function Productos() {
 
     useEffect(
         () => {
-            setLoading(false)
-
-            getProductosNamed(productName)
-                .then(response => {
-                    console.log("response")
+            const request = async () => {
+                try {
+                    const response = await getProductosNamed(productName)
+                    console.log("response", response)
                     setProductos(response)
-                })
-
+                    setLoading(false)
+                } catch (error) {
+                    console.error(error)       
+                }
+            }
+            request()
         },
         [productName]
     )

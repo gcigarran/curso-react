@@ -48,7 +48,11 @@ function ProductosModificar() {
     )
 
     if (loading) {
-        return <div>Cargando...</div>
+        return (
+            <div>
+                Cargando...
+            </div>
+        )
     }
 
     return (
