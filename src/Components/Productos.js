@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getProductosNamed } from "../Services/productosService";
 import Producto from "./Producto";
 import Row from "react-bootstrap/Row"
+import Loading from "./Loading";
 
 function Productos() {
 
@@ -20,7 +21,7 @@ function Productos() {
                     setProductos(response)
                     setLoading(false)
                 } catch (error) {
-                    console.error(error)       
+                    console.error(error)
                 }
             }
             request()
@@ -32,26 +33,20 @@ function Productos() {
         setProductName(event.target.value)
     }
 
-    if (loading) {
-        return (
-            <div>
-                Loading...
-            </div>
-        )
-    } 
-
-        return (
+    return (
+        <Loading loading={loading} config={{variant: "danger"}}>
             <div>
                 <h3>Listado de Productos</h3>
                 <p>Término buscado: <input value={productName} onChange={handleChange}></input></p>
                 <Row>
                     {productos.map(producto =>
-                        <Producto data={producto} />
-                    )} 
+                        <Producto key={producto.id} data={producto} />
+                    )}
                 </Row>
             </div>
-        )
-    
+        </Loading>
+    )
+
 }
 
 export default Productos

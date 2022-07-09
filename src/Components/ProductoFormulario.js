@@ -1,9 +1,10 @@
 import React from "react";
 import { Button, Form } from 'react-bootstrap';
+import ButtonWithLoading from "./ButtonWithLoading";
 import Input from './Input'
 
 function ProductoFormulario(props){
-    const {onSubmit, buttonLabel, register} = props
+    const {onSubmit, buttonLabel, register, loading} = props
 
     return (
         <Form onSubmit={onSubmit}>
@@ -13,7 +14,7 @@ function ProductoFormulario(props){
 
         <Input label="Precio" name="price" register={{ ...register("price") }} type="number" />
 
-        <Button type="submit" variant="primary">{buttonLabel}</Button>
+        <ButtonWithLoading loading={loading}>{buttonLabel}</ButtonWithLoading>
     </Form>
     )
 
