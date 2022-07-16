@@ -5,15 +5,18 @@ import {
 import Menu from './Components/Menu'
 import PublicRoutes from './Routes/PublicRoutes';
 import Container from 'react-bootstrap/esm/Container';
+import AuthProvider from './Context/AuthProvider';
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <Menu />
-        <Container>
-          <PublicRoutes />
-        </Container>
+        <AuthProvider>
+          <Menu />
+          <Container>
+            <PublicRoutes />
+          </Container>
+        </AuthProvider>
       </Router>
     </div>
   );

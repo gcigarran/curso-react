@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useContext} from "react"
 import { useForm } from "react-hook-form"
 import Input from "../Components/Input"
 import { Form } from 'react-bootstrap'
@@ -6,6 +6,7 @@ import firebase from '../Config/firebase'
 import ButtonWithLoading from "../Components/ButtonWithLoading"
 import AlertCustom from "../Components/AlertCustom"
 import { loginMessage } from "../Util/errorMessage"
+import AuthContext from "../Context/AuthContext"
 
 function LoginPage() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm()
@@ -13,6 +14,8 @@ function LoginPage() {
     const [loading, setLoading] = useState(false)
 
     const [alert, setAlert] = useState({variant:'', text:''})
+
+    const context = useContext(AuthContext)
 
     const onSubmit = async (data) => {
         setLoading(true)
@@ -22,6 +25,9 @@ function LoginPage() {
             console.log(responseUser?.user?.uid)
             setLoading(false)
             setAlert({variant:"success", text:"Bienvenido"})
+            if (responseUser.user?.uid) {
+                context.loginUser()
+            }
         } catch (error) {
             console.log(error)
             setLoading(false)
