@@ -6,7 +6,7 @@ import firebase from '../Config/firebase'
 import ButtonWithLoading from "../Components/ButtonWithLoading"
 
 function RegistroPage() {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm()
+    const { register, handleSubmit } = useForm()
 
     const [loading, setLoading] = useState(false)
 

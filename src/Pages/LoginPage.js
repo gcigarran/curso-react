@@ -9,7 +9,7 @@ import { loginMessage } from "../Util/errorMessage"
 import AuthContext from "../Context/AuthContext"
 
 function LoginPage() {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm()
+    const { register, handleSubmit } = useForm()
 
     const [loading, setLoading] = useState(false)
 
