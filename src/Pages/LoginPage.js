@@ -24,9 +24,15 @@ function LoginPage() {
             const responseUser = await firebase.auth.signInWithEmailAndPassword(data.email, data.password)
             console.log(responseUser?.user?.uid)
             setLoading(false)
-            setAlert({variant:"success", text:"Bienvenido"})
             if (responseUser.user?.uid) {
-                context.loginUser()
+                const dbResponse = await firebase.firestore
+                .collection("usuarios")
+                .where("userId","==",responseUser.user.uid)
+                .get()
+                const user = dbResponse.docs[0].data()
+                console.log(user)
+                context.loginUser(user)
+                setAlert({variant:"success", text:"Bienvenido, "+user.name})
             }
         } catch (error) {
             console.log(error)

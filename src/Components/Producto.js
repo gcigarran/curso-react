@@ -23,7 +23,9 @@ function Producto(props) {
                                 <Button variant="primary" as={Link} to={'/producto/' + data.id}>Ver Detalle</Button>
                                 {
                                     context.isLogin &&
-                                    <Button variant="secondary" as={Link} to={'/productos/modificar/' + data.id}>Modificar</Button>
+                                    <>
+                                        <Button variant="secondary" as={Link} to={'/productos/modificar/' + data.id}>Modificar</Button>
+                                    </>
                                 }
                             </Card.Body>
                         </Card>

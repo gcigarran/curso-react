@@ -26,17 +26,23 @@ function Menu() {
                                     {context.isLogin &&
                                         <>
                                             <Nav.Link onClick={context.logoutUser}>Logout</Nav.Link>
-                                        </>
-                                    }
-                                    <NavDropdown title="Productos" id="basic-nav-dropdown">
-                                        <NavDropdown.Item as={Link} to="/productos/alta">Alta</NavDropdown.Item>
-                                        {/* <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+                                            <NavDropdown title="Productos" id="basic-nav-dropdown">
+                                                <NavDropdown.Item as={Link} to="/productos/alta">Alta</NavDropdown.Item>
+                                                {/* <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
                                 <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
                                 <NavDropdown.Divider />
                             <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
-                                    </NavDropdown>
+                                            </NavDropdown>
+                                        </>
+                                    }
                                 </Nav>
                             </Navbar.Collapse>
+                            {
+                                context.isLogin &&
+                                <>
+                                    Hola, {context?.userInfo?.name}
+                                </>
+                            }
                         </Container>
                     </Navbar>
                 }

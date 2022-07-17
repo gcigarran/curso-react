@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import context from "react-bootstrap/esm/AccordionContext";
 import { useParams } from "react-router-dom"
 import Loading from "../Components/Loading";
+import AuthContext from "../Context/AuthContext";
 import { getProductoById } from "../Services/productosService";
 
 function DetallePage() {
@@ -36,14 +38,24 @@ function DetallePage() {
 
 
     return (<Loading loading={loading}>
-        <div>
-            <h1> {producto.title}</h1>
-            <p> {producto.description} </p>
-            <img src={producto.thumbnail} alt={producto.thumbnail_id}></img>
-            <p>Precio: {producto.currency_id}  {producto.price}</p>
-            <button onClick={handleClick}>Comprar</button>
-            <div>{mensaje}</div>
-        </div>
+        <AuthContext.Consumer>
+            {
+                context =>
+                    <div>
+                        <h1> {producto.title}</h1>
+                        <p> {producto.description} </p>
+                        <img src={producto.thumbnail} alt={producto.thumbnail_id}></img>
+                        <p>Precio: {producto.currency_id}  {producto.price}</p>
+                        {
+                            context.isLogin &&
+                            <>
+                                <button onClick={handleClick}>Comprar</button>
+                            </>
+                        }
+                        <div>{mensaje}</div>
+                    </div>
+            }
+        </AuthContext.Consumer>
     </Loading>
     )
 
